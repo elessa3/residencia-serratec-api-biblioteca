@@ -45,9 +45,17 @@ public class Alunos {
 	@Column(name = "cidade")
 	private String cidade;
 	
-	@OneToMany(mappedBy = "alunos")
+	@OneToMany(mappedBy = "aluno")
 	private Set <Emprestimo> emprestimo;
 	
+
+	public Set<Emprestimo> getEmprestimo() {
+		return emprestimo;
+	}
+
+	public void setEmprestimo(Set<Emprestimo> emprestimo) {
+		this.emprestimo = emprestimo;
+	}
 
 	public Integer getNumeroMatriculaAluno() {
 		return numeroMatriculaAluno;

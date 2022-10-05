@@ -39,9 +39,17 @@ public class Livros {
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
 	private Editora editora;
 	
-	@OneToOne(mappedBy = "livros")
+	@OneToOne(mappedBy = "livro")
 	private Emprestimo emprestimo;
 	
+
+	public Emprestimo getEmprestimo() {
+		return emprestimo;
+	}
+
+	public void setEmprestimo(Emprestimo emprestimo) {
+		this.emprestimo = emprestimo;
+	}
 
 	public Integer getCodigoLivro() {
 		return codigoLivro;
