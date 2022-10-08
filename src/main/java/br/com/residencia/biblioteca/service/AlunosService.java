@@ -20,8 +20,8 @@ public class AlunosService {
 	}
 	
 	public Alunos getAlunosById(Integer id) {
-		return alunosRepository.findById(id) .get();
-		//return alunoRepository.findById(id).orElse(null);
+		//return alunosRepository.findById(id) .get();
+		return alunosRepository.findById(id).orElse(null);
 		// para localizar
 	}
 	

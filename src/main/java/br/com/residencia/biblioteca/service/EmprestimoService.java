@@ -30,6 +30,7 @@ public class EmprestimoService {
 		
 		Emprestimo emprestimoExistenteNoBanco = getEmprestimoById(id);
 		
+		
 		emprestimoExistenteNoBanco.setDataEmprestimo(emprestimo.getDataEmprestimo());
 		emprestimoExistenteNoBanco.setDataEntrega(emprestimo.getDataEntrega());
 		emprestimoExistenteNoBanco.setValorEmprestimo(emprestimo.getValorEmprestimo());

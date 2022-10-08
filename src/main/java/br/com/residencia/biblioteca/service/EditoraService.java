@@ -19,7 +19,8 @@ public class EditoraService {
 	}
 	
 	public Editora getEditoraById(Integer id) {
-		return editoraRepository.findById(id).get();
+		//return editoraRepository.findById(id).get();
+		return editoraRepository.findById(id).orElse(null);
 	}
 	
 	public Editora saveEditora(Editora editora) {
@@ -36,8 +37,20 @@ public class EditoraService {
 		return editoraRepository.save(editoraExistenteNoBanco);
 	}
 	
-	public Editora deleteEditora(Integer id) {
+	/*public Editora deleteEditora(Integer id) {		
 		editoraRepository.deleteById(id);
 		return getEditoraById(id);
+	}*/
+	public Editora deleteEditora(Integer id) {		
+		editoraRepository.deleteById(id);		
+		return getEditoraById(id);
 	}
+	
+	/*public Boolean deleteEditoraBool (Integer id) {
+		if(null != getEditoraById(id)) {
+			editoraRepository.deleteById(id);
+			return true;
+		}
+		return false;
+	}*/
 }
