@@ -11,6 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
+@JsonIdentityInfo(
+		generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "numeroMatriculaAluno")
+
 @Entity
 @Table(name = "alunos")
 public class Alunos {
@@ -44,6 +52,7 @@ public class Alunos {
 	
 	@Column(name = "cidade")
 	private String cidade;
+	
 	
 	@OneToMany(mappedBy = "aluno")
 	private Set <Emprestimo> emprestimo;

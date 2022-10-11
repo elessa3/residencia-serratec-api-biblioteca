@@ -51,6 +51,22 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.11</version>
 		</dependency>
+		<dependency>
+     		 <groupId>org.springdoc</groupId>
+      			<artifactId>springdoc-openapi-webmvc-core</artifactId>
+      			<version>1.6.11</version>
+   		</dependency>
+   		<dependency>
+      			<groupId>org.springdoc</groupId>
+      			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+      			<version>1.6.11</version>
+   		</dependency>
+   		<dependency>
+     			 <groupId>org.springdoc</groupId>
+      			<artifactId>springdoc-openapi-data-rest</artifactId>
+      			<version>1.6.11</version>
+   		</dependency>
+		
 	</dependencies>
 
 	<build>
