@@ -19,7 +19,6 @@ import br.com.residencia.biblioteca.dto.EditoraDTO;
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "codigoEditora")
-
 @Entity
 @Table(name = "editora")
 public class Editora {
@@ -34,9 +33,10 @@ public class Editora {
 	@OneToMany(mappedBy = "editora")
 	private Set <Livros> livros;
 	
-	public Editora () {		
-	}		
-
+	public Editora() {
+		
+	}
+	
 	public Editora(EditoraDTO editoraDTO) {
         this.codigoEditora = editoraDTO.getCodigoEditora();
         this.nome= editoraDTO.getNome();

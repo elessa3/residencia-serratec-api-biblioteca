@@ -14,23 +14,7 @@ public class AlunosDTO {
 	private String bairro;
 	private String cidade;
 	
-	/*public LivrosDTO() {		
-	}*/
 	
-	/*public LivrosDTO(Integer numeroMatriculaAluno, String nome, Instant dataNascimento,
-			String cpf, String  logradouro, String numeroLogradouro, String complemento,
-			String bairro, String cidade) {		
-		this.numeroMatriculaAluno = numeroMatriculaAluno;
-		this.nome = nome;
-		this.dataNascimento = dataNascimento;
-		this.cpf = cpf;
-		this.logradouro = logradouro;
-		this.numeroLogradouro = numeroLogradouro;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.cidade = cidade;		
-	}*/
-
 	public Integer getNumeroMatriculaAluno() {
 		return numeroMatriculaAluno;
 	}

@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
 		property = "codigoLivro")
-
 @Entity
 @Table(name = "livros")
 public class Livros {
@@ -47,10 +46,7 @@ public class Livros {
 	@OneToMany(mappedBy = "livros")
 	private Set<Emprestimo> emprestimos;	
 	
-	public Livros() {
-		
-	}
-
+	
 	public Integer getCodigoLivro() {
 		return codigoLivro;
 	}

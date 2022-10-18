@@ -86,6 +86,7 @@ public EmprestimoDTO updateEmprestimoDTO(EmprestimoDTO EmprestimoDTO, Integer id
 	private EmprestimoDTO toDTO(Emprestimo emprestimo) {
 		EmprestimoDTO emprestimoDTO = new EmprestimoDTO();
 		
+		emprestimoDTO.setCodigoEmprestimo(emprestimo.getCodigoEmprestimo());
 		emprestimoDTO.setDataEmprestimo(emprestimo.getDataEmprestimo());
 		emprestimoDTO.setDataEntrega(emprestimo.getDataEntrega());
 		emprestimoDTO.setValorEmprestimo(emprestimo.getValorEmprestimo());

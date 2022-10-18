@@ -1,6 +1,6 @@
 package br.com.residencia.biblioteca.dto;
 
-public class ConsultaCNPJDTO {
+public class ConsultaCnpjDTO {
 	
 	private String situacao;
 	private String tipo;

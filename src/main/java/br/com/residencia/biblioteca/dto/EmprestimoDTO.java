@@ -11,17 +11,6 @@ public class EmprestimoDTO {
 	private BigDecimal valorEmprestimo;
 	
 	
-	public EmprestimoDTO() {		
-	}
-	
-	public EmprestimoDTO(Integer codigoEmprestimo,Instant dataEntrega, Instant dataEmprestimo, BigDecimal valorEmprestimo) {
-		
-		this.codigoEmprestimo = codigoEmprestimo;
-		this.dataEntrega = dataEntrega;
-		this.dataEmprestimo = dataEmprestimo;
-		this.valorEmprestimo = valorEmprestimo;
-	}
-
 	public Integer getCodigoEmprestimo() {
 		return codigoEmprestimo;
 	}

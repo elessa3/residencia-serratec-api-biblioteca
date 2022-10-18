@@ -80,12 +80,14 @@ public class LivrosService {
 		livros.setNomeAutor(livrosDTO.getNomeAutor());
 		livros.setDataLancamento(livrosDTO.getDataLancamento());
 		livros.setCodigoIsbn(livrosDTO.getCodigoIsbn());
+		
 		return livros;
 	}
 	
 	public LivrosDTO toDTO(Livros livros) {
 		LivrosDTO livrosDTO = new LivrosDTO();
 		
+		livrosDTO.setCodigoLivro(livros.getCodigoLivro());
 		livrosDTO.setNomeLivro(livros.getNomeAutor());
 		livrosDTO.setNomeAutor(livros.getNomeAutor());
 		livrosDTO.setDataLancamento(livros.getDataLancamento());

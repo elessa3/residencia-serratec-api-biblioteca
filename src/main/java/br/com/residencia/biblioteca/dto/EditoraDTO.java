@@ -1,12 +1,12 @@
 package br.com.residencia.biblioteca.dto;
 
-import java.util.Set;
+import java.util.List;
 
 public class EditoraDTO {	
 	
 	private Integer codigoEditora;	
 	private String nome;
-	private Set<LivrosDTO> listaLivrosDTO;
+	private List<LivrosDTO> listaLivrosDTO;
 	
 		
 	public Integer getCodigoEditora() {
@@ -25,11 +25,11 @@ public class EditoraDTO {
 		this.nome = nome;
 	}
 
-	public Set<LivrosDTO> getListaLivrosDTO() {
+	public List<LivrosDTO> getListaLivrosDTO() {
 		return listaLivrosDTO;
 	}
 
-	public void setListaLivrosDTO(Set<LivrosDTO> listaLivrosDTO) {
+	public void setListaLivrosDTO(List<LivrosDTO> listaLivrosDTO) {
 		this.listaLivrosDTO = listaLivrosDTO;
 	}
 	

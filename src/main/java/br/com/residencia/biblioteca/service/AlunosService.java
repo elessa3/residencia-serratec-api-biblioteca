@@ -60,8 +60,7 @@ public class AlunosService {
 		alunoExistenteNoBanco.setNome(alunos.getNome());
 		alunoExistenteNoBanco.setNumeroLogradouro(alunos.getNumeroLogradouro());
 				
-		return alunosRepository.save(alunoExistenteNoBanco);
-		//para atualizar os dados
+		return alunosRepository.save(alunoExistenteNoBanco);		
 	}
 	
 public AlunosDTO updateAlunosDTO(AlunosDTO alunosDTO, Integer id) {
@@ -78,12 +77,13 @@ public AlunosDTO updateAlunosDTO(AlunosDTO alunosDTO, Integer id) {
 		return AlunosAtualizadoDTO;				
 	}
 	
-	private Alunos toEntidade(AlunosDTO alunosDTO) {
+	public Alunos toEntidade(AlunosDTO alunosDTO) {
 		Alunos alunos = new Alunos();
 		
 		alunos.setBairro(alunosDTO.getBairro());		
 		alunos.setCidade(alunosDTO.getCidade());
 		alunos.setComplemento(alunosDTO.getComplemento());
+		alunos.setCpf(alunosDTO.getCpf());
 		alunos.setDataNascimento(alunosDTO.getDataNascimento());
 		alunos.setLogradouro(alunosDTO.getLogradouro());
 		alunos.setNumeroLogradouro(alunosDTO.getNumeroLogradouro());
@@ -92,32 +92,24 @@ public AlunosDTO updateAlunosDTO(AlunosDTO alunosDTO, Integer id) {
 		return alunos;
 	}
 	
-	private AlunosDTO toDTO(Alunos Alunos) {
+	public AlunosDTO toDTO(Alunos alunos) {
 		AlunosDTO alunosDTO = new AlunosDTO();
 		
-		alunosDTO.setBairro(alunosDTO.getBairro());		
-		alunosDTO.setCidade(alunosDTO.getCidade());
-		alunosDTO.setComplemento(alunosDTO.getComplemento());
-		alunosDTO.setDataNascimento(alunosDTO.getDataNascimento());
-		alunosDTO.setLogradouro(alunosDTO.getLogradouro());
-		alunosDTO.setNumeroLogradouro(alunosDTO.getNumeroLogradouro());
-		alunosDTO.setNome(alunosDTO.getNome());		
+		alunosDTO.setBairro(alunos.getBairro());		
+		alunosDTO.setCidade(alunos.getCidade());
+		alunosDTO.setComplemento(alunos.getComplemento());
+		alunosDTO.setCpf(alunos.getCpf());
+		alunosDTO.setDataNascimento(alunos.getDataNascimento());
+		alunosDTO.setLogradouro(alunos.getLogradouro());
+		alunosDTO.setNumeroLogradouro(alunos.getNumeroLogradouro());
+		alunosDTO.setNome(alunos.getNome());		
 		
 		return alunosDTO;
 	}
 	
 	public Alunos deleteAluno(Integer id) {
 		alunosRepository.deleteById(id);
-		return getAlunosById(id);
-		//para deletar os dados
+		return getAlunosById(id);	
 	}
-	
-/*	public Boolean deleteAlunosBool(Integer id) {
-		alunosRepository.deleteById(id);
-		if(null != getAlunosById(id))
-			return 0;
-		else
-			return 1;
-			metodo possivel
-	}*/
+
 }

@@ -13,4 +13,6 @@ public interface LivrosRepository
 	public List<Livros> findByEditora(Editora editora);
 	
 	public Livros findByNomeLivro(String nome);
+	
+	public Livros findByNomeAutor(String nome);
 }
