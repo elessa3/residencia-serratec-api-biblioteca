@@ -1,68 +1,35 @@
-package br.com.residencia.biblioteca.entity;
+package br.com.residencia.biblioteca.dto;
 
 import java.time.Instant;
-import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-
-@JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "numeroMatriculaAluno")
-
-@Entity
-@Table(name = "alunos")
-public class Alunos {
+public class AlunosDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "numeromatriculaaluno")
 	private Integer numeroMatriculaAluno;
-	
-	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name = "datanascimento")
-	private Instant dataNascimento;	
-	
-	@Column(name = "cpf", unique = true, nullable = true )
+	private Instant dataNascimento;
 	private String cpf;
-	
-	@Column(name = "logradouro")
 	private String logradouro;
-	
-	@Column(name = "numerologradouro")
 	private String numeroLogradouro;
-	
-	@Column(name = "complemento")
 	private String complemento;
-	
-	@Column(name = "bairro")
 	private String bairro;
+	private String cidade;
 	
-	@Column(name = "cidade")
-	private String cidade;	
+	/*public LivrosDTO() {		
+	}*/
 	
-	@OneToMany(mappedBy = "alunos")
-	private Set <Emprestimo> emprestimo;
-	
-
-	public Set<Emprestimo> getEmprestimo() {
-		return emprestimo;
-	}
-
-	public void setEmprestimo(Set<Emprestimo> emprestimo) {
-		this.emprestimo = emprestimo;
-	}
+	/*public LivrosDTO(Integer numeroMatriculaAluno, String nome, Instant dataNascimento,
+			String cpf, String  logradouro, String numeroLogradouro, String complemento,
+			String bairro, String cidade) {		
+		this.numeroMatriculaAluno = numeroMatriculaAluno;
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.cpf = cpf;
+		this.logradouro = logradouro;
+		this.numeroLogradouro = numeroLogradouro;
+		this.complemento = complemento;
+		this.bairro = bairro;
+		this.cidade = cidade;		
+	}*/
 
 	public Integer getNumeroMatriculaAluno() {
 		return numeroMatriculaAluno;
@@ -135,8 +102,6 @@ public class Alunos {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
-	
 	
 	
 

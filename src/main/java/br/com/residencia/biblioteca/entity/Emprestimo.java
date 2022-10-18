@@ -29,11 +29,11 @@ public class Emprestimo {
 		
 	@ManyToOne
 	@JoinColumn(name = "numeromatriculaaluno", referencedColumnName = "numeromatriculaaluno")
-	private Alunos aluno;	
+	private Alunos alunos;	
 		
 	@ManyToOne
 	@JoinColumn(name = "codigolivro", referencedColumnName = "codigolivro")
-	private Livros livro;
+	private Livros livros;
 	
 	@Column(name = "dataemprestimo")
 	private Instant dataEmprestimo;
@@ -53,20 +53,20 @@ public class Emprestimo {
 		this.codigoEmprestimo = codigoEmprestimo;
 	}
 	
-	public Alunos getAluno() {
-		return aluno;
+	public Alunos getAlunos() {
+		return alunos;
 	}
 	
-	public void setAluno(Alunos aluno) {
-		this.aluno = aluno;
+	public void setAlunos(Alunos alunos) {
+		this.alunos = alunos;
 	}
 	
-	public Livros getLivro() {
-		return livro;
+	public Livros getLivros() {
+		return livros;
 	}
 	
-	public void setLivro(Livros livro) {
-		this.livro = livro;
+	public void setLivros(Livros livros) {
+		this.livros = livros;
 	}
 	
 	public Instant getDataEmprestimo() {

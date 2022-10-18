@@ -33,8 +33,9 @@ public class Editora {
 	
 	@OneToMany(mappedBy = "editora")
 	private Set <Livros> livros;
-	//o SET equivale ao list mas tem pequenas diferenças
 	
+	public Editora () {		
+	}		
 
 	public Editora(EditoraDTO editoraDTO) {
         this.codigoEditora = editoraDTO.getCodigoEditora();

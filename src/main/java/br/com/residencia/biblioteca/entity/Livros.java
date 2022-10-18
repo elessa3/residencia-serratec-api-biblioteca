@@ -40,24 +40,15 @@ public class Livros {
 	@Column(name = "codigoisbn")
 	private Integer codigoIsbn;
 	
-	//@Column(name = "codigoeditora")
-	//private Integer codigoEditora;
-	//Criando uma estância de relacionamento
 	@ManyToOne
 	@JoinColumn(name = "codigoeditora", referencedColumnName = "codigoeditora")
-	private Editora editora;
+	private Editora editora;	
 	
+	@OneToMany(mappedBy = "livros")
+	private Set<Emprestimo> emprestimos;	
 	
-	@OneToMany(mappedBy = "livro")
-	private Set<Emprestimo> emprestimos;
-	
-	
-	public Set<Emprestimo> getEmprestimos() {
-		return emprestimos;
-	}
-
-	public void setEmprestimos(Set<Emprestimo> emprestimos) {
-		this.emprestimos = emprestimos;
+	public Livros() {
+		
 	}
 
 	public Integer getCodigoLivro() {
@@ -100,16 +91,20 @@ public class Livros {
 		this.codigoIsbn = codigoIsbn;
 	}
 	
-
 	public Editora getEditora() {
 		return editora;
-	}
-	
+	}	
 
 	public void setEditora(Editora editora) {
 		this.editora = editora;
 	}
 
+	public Set<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
 
+	public void setEmprestimos(Set<Emprestimo> emprestimos) {
+		this.emprestimos = emprestimos;
+	}
 	
 }

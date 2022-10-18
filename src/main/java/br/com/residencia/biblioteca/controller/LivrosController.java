@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.residencia.biblioteca.dto.LivrosDTO;
 import br.com.residencia.biblioteca.entity.Livros;
 import br.com.residencia.biblioteca.service.LivrosService;
 
@@ -30,6 +31,11 @@ public class LivrosController {
 			return new ResponseEntity<> (livrosService.getAllLivros(), HttpStatus.OK);
 		}
 		
+		/*@GetMapping("/dto")
+		public ResponseEntity<List<LivrosDTO>> getAllLivrosDTO(){
+			return new ResponseEntity<> (livrosService.getAllLivrosDTO(), HttpStatus.OK);
+		}*/
+		
 		@GetMapping("/{id}")
 		public ResponseEntity<Livros> getLivrosById(@PathVariable Integer id){
 			return new ResponseEntity<> (livrosService.getLivrosById(id), 
@@ -38,13 +44,22 @@ public class LivrosController {
 		
 		@PostMapping
 		public ResponseEntity<Livros> saveLivros(@RequestBody Livros livros) {
-			return new ResponseEntity<>(livrosService.saveLivros(livros), HttpStatus.OK);
-			
+			return new ResponseEntity<>(livrosService.saveLivros(livros), HttpStatus.OK);			
+		}
+		
+		@PostMapping("/dto")
+		public ResponseEntity<LivrosDTO> saveLivrosDTO(@RequestBody LivrosDTO livrosDTO) {
+			return new ResponseEntity<>(livrosService.saveLivrosDTO(livrosDTO), HttpStatus.OK);			
 		}
 		
 		@PutMapping("/{id}")
 		public ResponseEntity<Livros> updateLivros(@RequestBody Livros livros, @PathVariable Integer id) {
 			return new ResponseEntity<> (livrosService.updateLivros(livros, id), HttpStatus.OK);
+		}
+		
+		@PutMapping("/dto/{id}")
+		public ResponseEntity<LivrosDTO> updateLivrosDTO(@RequestBody LivrosDTO livrosDTO, @PathVariable Integer id) {
+			return new ResponseEntity<> (livrosService.updateLivrosDTO(livrosDTO, id), HttpStatus.OK);
 		}
 		
 		@DeleteMapping("/{id}")

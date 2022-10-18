@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.residencia.biblioteca.dto.AlunosDTO;
+import br.com.residencia.biblioteca.dto.EditoraDTO;
 import br.com.residencia.biblioteca.entity.Alunos;
 import br.com.residencia.biblioteca.service.AlunosService;
 
@@ -26,6 +28,12 @@ public class AlunosController {
 	@GetMapping
 	public ResponseEntity<List<Alunos>> getAllAlunos(){
 		return new ResponseEntity<> (alunosService.getAllAlunos(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/dto")
+	public ResponseEntity<List<AlunosDTO>> getAllAlunosDTO(){
+		return new ResponseEntity<> (alunosService.getAllAlunosDTO(), 
+					HttpStatus.CREATED);
 	}
 
 	/*@GetMapping("/hello")
@@ -52,12 +60,23 @@ public class AlunosController {
 	@PostMapping
 	public ResponseEntity<Alunos> saveAluno(@RequestBody Alunos alunos) {
 		return new ResponseEntity<>(alunosService.saveAluno(alunos), HttpStatus.CREATED);
-		
+	}
+	
+	@PostMapping("/dto")
+	public ResponseEntity<AlunosDTO> saveAlunosDTO(@RequestBody AlunosDTO alunosDTO) {
+		return new ResponseEntity<>(alunosService.saveAlunosDTO(alunosDTO), 
+				HttpStatus.CREATED);		
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Alunos> updateAlunos(@RequestBody Alunos alunos, @PathVariable Integer id) {
 		return new ResponseEntity<> (alunosService.updateAlunos(alunos, id), HttpStatus.OK);
+	}
+	
+	@PutMapping("/dto/{id}")
+	public ResponseEntity<AlunosDTO> updateEditoraDTO(@RequestBody AlunosDTO alunosDTO, @PathVariable Integer id) {
+		return new ResponseEntity<> (alunosService.updateAlunosDTO(alunosDTO, id), 
+				HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
