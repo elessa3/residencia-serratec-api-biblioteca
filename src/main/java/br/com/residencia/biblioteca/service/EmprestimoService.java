@@ -97,7 +97,6 @@ public EmprestimoDTO updateEmprestimoDTO(EmprestimoDTO EmprestimoDTO, Integer id
 	public Emprestimo deletarEmprestimo(Integer id) {
 		emprestimoRepository.deleteById(id);
 		return deletarEmprestimo(id);
-	}
-	
+	}	
 
 }

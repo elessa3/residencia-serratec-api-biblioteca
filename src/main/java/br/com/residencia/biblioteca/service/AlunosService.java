@@ -7,14 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.AlunosDTO;
+import br.com.residencia.biblioteca.dto.EmprestimoDTO;
 import br.com.residencia.biblioteca.entity.Alunos;
+import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.repository.AlunosRepository;
+import br.com.residencia.biblioteca.repository.EmprestimoRepository;
 
 @Service
 public class AlunosService {
 	
 	@Autowired
 	AlunosRepository alunosRepository;
+	
+	@Autowired
+	EmprestimoRepository emprestimoRepository;
+	
+	@Autowired
+	EmprestimoService emprestimoService;
 	
 	public List<Alunos> getAllAlunos() {
 		return alunosRepository.findAll();		
@@ -111,5 +120,45 @@ public AlunosDTO updateAlunosDTO(AlunosDTO alunosDTO, Integer id) {
 		alunosRepository.deleteById(id);
 		return getAlunosById(id);	
 	}
+	
+	//**************************
+	
+	/*public List<AlunosDTO> getAllAlunosEmprestimos() {
+			
+			List<Alunos> listaAlunos = alunosRepository.findAll();
+			List<AlunosDTO> listaAlunosDTO = new ArrayList<>();		
+		
+			//Alunos alunos = new Alunos();
+			AlunosDTO alunosDTO = new AlunosDTO();
+			
+			for(Alunos alunos : listaAlunos) {			
+								
+				alunos.setNumeroMatriculaAluno(alunosDTO.getNumeroMatriculaAluno());
+				alunos.setNome(alunosDTO.getNome());
+				alunos.setCpf(alunosDTO.getCpf());
+								
+				List<Emprestimo> listaEmprestimo = new ArrayList<>();
+				List<EmprestimoDTO> listaEmprestimoResumoDTO = new ArrayList<>();
+						
+				listaEmprestimo = emprestimoRepository.findById(id);
+				
+				for(Emprestimo Emprestimo : listaEmprestimo) {
+					EmprestimoDTO emprestimoDTO = new EmprestimoDTO());					
+					Emprestimo emprestimo = new Emprestimo();
+					
+					emprestimo.setCodigoEmprestimo(emprestimoDTO.getCodigoEmprestimo());
+					emprestimo.setDataEmprestimo(emprestimoDTO.getDataEmprestimo());
+					emprestimo.setDataEntrega(emprestimoDTO.getDataEntrega());
+					
+					//listaEmprestimoResumoDTO = emprestimoService(emprestimo);
+					listaEmprestimoResumoDTO.add(emprestimoDTO);
+				}			
+				
+				alunosDTO.setlistaEmprestimoResumoDTO(listaEmprestimoResumoDTO);	
+				
+				listaAlunosDTO.add(listaEmprestimo);
+			}			
+			return listaAlunosDTO;
+		}*/
 
 }

@@ -111,7 +111,7 @@ public class EditoraService {
 		EditoraDTO editoraAtualizadaDTO = new EditoraDTO();
 		
 		if(editoraExistenteNoBanco != null) {
-			
+			editoraDTO.setCodigoEditora(editoraExistenteNoBanco.getCodigoEditora());
 			editoraExistenteNoBanco = toEntidade(editoraDTO);
 			
 			Editora editoraAtualizada = editoraRepository.save(editoraExistenteNoBanco);
@@ -142,6 +142,7 @@ public class EditoraService {
 		return getEditoraById(id);
 	}
 	
+	//***************************
 	public List<EditoraDTO> getAllEditorasLivrosDTO() {
 		
 		List<Editora> listaEditora = editoraRepository.findAll();
