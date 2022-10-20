@@ -4,8 +4,11 @@ public class CredenciaisLoginDTO {
 	private String email;
 	private String password;
 	
-	public CredenciaisLoginDTO() {
-		
+	
+	public CredenciaisLoginDTO(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
 	}
 	
 	public String getEmail() {

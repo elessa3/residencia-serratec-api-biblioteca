@@ -7,9 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.AlunosDTO;
+import br.com.residencia.biblioteca.dto.AlunosEmprestimosDTO;
+import br.com.residencia.biblioteca.dto.EditoraDTO;
 import br.com.residencia.biblioteca.dto.EmprestimoDTO;
+import br.com.residencia.biblioteca.dto.EmprestimosResumoDTO;
+import br.com.residencia.biblioteca.dto.LivrosDTO;
 import br.com.residencia.biblioteca.entity.Alunos;
+import br.com.residencia.biblioteca.entity.Editora;
 import br.com.residencia.biblioteca.entity.Emprestimo;
+import br.com.residencia.biblioteca.entity.Livros;
 import br.com.residencia.biblioteca.repository.AlunosRepository;
 import br.com.residencia.biblioteca.repository.EmprestimoRepository;
 
@@ -123,42 +129,43 @@ public AlunosDTO updateAlunosDTO(AlunosDTO alunosDTO, Integer id) {
 	
 	//**************************
 	
-	/*public List<AlunosDTO> getAllAlunosEmprestimos() {
+	public List<AlunosEmprestimosDTO> getAllAlunosEmprestimosDTO() {
 			
 			List<Alunos> listaAlunos = alunosRepository.findAll();
-			List<AlunosDTO> listaAlunosDTO = new ArrayList<>();		
+			List<AlunosEmprestimosDTO> listaAlunosEmprestimosDTO = new ArrayList<>();			
+	
 		
-			//Alunos alunos = new Alunos();
-			AlunosDTO alunosDTO = new AlunosDTO();
+		for(Alunos alunos : listaAlunos) {			
+			AlunosEmprestimosDTO alunosEmprestimosDTO = toAlunosEmprestimosDTO(alunos);
+			List<Emprestimo> listaEmprestimo = new ArrayList<>();
+			List<EmprestimosResumoDTO> listaEmprestimosResumoDTO = new ArrayList<>();
+									
+			listaEmprestimo = emprestimoRepository.findByAluno(alunos);
 			
-			for(Alunos alunos : listaAlunos) {			
-								
-				alunos.setNumeroMatriculaAluno(alunosDTO.getNumeroMatriculaAluno());
-				alunos.setNome(alunosDTO.getNome());
-				alunos.setCpf(alunosDTO.getCpf());
-								
-				List<Emprestimo> listaEmprestimo = new ArrayList<>();
-				List<EmprestimoDTO> listaEmprestimoResumoDTO = new ArrayList<>();
-						
-				listaEmprestimo = emprestimoRepository.findById(id);
-				
-				for(Emprestimo Emprestimo : listaEmprestimo) {
-					EmprestimoDTO emprestimoDTO = new EmprestimoDTO());					
-					Emprestimo emprestimo = new Emprestimo();
-					
-					emprestimo.setCodigoEmprestimo(emprestimoDTO.getCodigoEmprestimo());
-					emprestimo.setDataEmprestimo(emprestimoDTO.getDataEmprestimo());
-					emprestimo.setDataEntrega(emprestimoDTO.getDataEntrega());
-					
-					//listaEmprestimoResumoDTO = emprestimoService(emprestimo);
-					listaEmprestimoResumoDTO.add(emprestimoDTO);
-				}			
-				
-				alunosDTO.setlistaEmprestimoResumoDTO(listaEmprestimoResumoDTO);	
-				
-				listaAlunosDTO.add(listaEmprestimo);
+			for(Emprestimo emprestimo : listaEmprestimo) {
+				EmprestimosResumoDTO emprestimosResumoDTO = emprestimoService.toEmprestimosResumoDTO(emprestimo);
+				listaEmprestimosResumoDTO.add(emprestimosResumoDTO);
 			}			
-			return listaAlunosDTO;
-		}*/
+			
+				alunosEmprestimosDTO.setListaEmprestimosResumoDTO(listaEmprestimosResumoDTO);
+				
+				listaAlunosEmprestimosDTO.add(alunosEmprestimosDTO);
+				
+		}			
+		return listaAlunosEmprestimosDTO;			
+						
+	}	
+	
+	public AlunosEmprestimosDTO  toAlunosEmprestimosDTO(Alunos alunos) {
+		AlunosEmprestimosDTO alunosEmprestimosDTO = new AlunosEmprestimosDTO();
+			 							
+		alunosEmprestimosDTO.setNumeroMatriculaAluno(alunos.getNumeroMatriculaAluno());
+		alunosEmprestimosDTO.setNome(alunos.getNome());
+		alunosEmprestimosDTO.setCpf(alunos.getCpf());
+				
+			return alunosEmprestimosDTO;
+			}
+				
+				 
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.residencia.biblioteca.dto.ConsultaCnpjDTO;
 import br.com.residencia.biblioteca.dto.EditoraDTO;
@@ -59,13 +62,14 @@ public class EditoraController {
 	//rever esta parte
 	@GetMapping("/consulta-cnpj/{cnpj}")
 	public ResponseEntity<ConsultaCnpjDTO> consultaCnpjApiExterna(@PathVariable String cnpj){
-		ConsultaCnpjDTO consultaCnpjDTO = editoraService.consultaCnpjApiExterna(cnpj);
+		/*ConsultaCnpjDTO consultaCnpjDTO = editoraService.consultaCnpjApiExterna(cnpj);
 		if(null != consultaCnpjDTO)
 			return new ResponseEntity<> (consultaCnpjDTO, 
 				HttpStatus.OK);
 		else
 			return new ResponseEntity<>(consultaCnpjDTO, 
-				HttpStatus.NOT_FOUND);		
+				HttpStatus.NOT_FOUND);	*/
+		return new ResponseEntity<>(editoraService.consultaCnpjApiExterna(cnpj), HttpStatus.OK);
 	}
 	
 	
@@ -79,10 +83,8 @@ public class EditoraController {
 	public ResponseEntity<EditoraDTO> saveEditoraDTO(@RequestBody EditoraDTO editoraDTO) {
 		return new ResponseEntity<>(editoraService.saveEditoraDTO(editoraDTO), 
 				HttpStatus.CREATED);		
-	}
+	}	
 	
-	//****************************
-	// rever também
 	@PostMapping("/cnpj/{cnpj}")
 	public ResponseEntity<Editora> saveEditoraFromApi(@PathVariable String cnpj){
 		return new ResponseEntity<>(editoraService.saveEditoraFromApi(cnpj),
@@ -91,6 +93,29 @@ public class EditoraController {
 	
 	//******************************
 	
+	@PostMapping(value = "/cadastro-editora-com-foto", 
+			consumes = { MediaType.APPLICATION_JSON_VALUE,
+						 MediaType.MULTIPART_FORM_DATA_VALUE}
+	)
+	public ResponseEntity<EditoraDTO> saveEditoraFoto(
+			@RequestPart("editora") String editoraTxt,
+			@RequestPart("filename") MultipartFile file
+			){
+		//ResponseEntity<FreeImageHostDTO> freeImgDTO = editoraService.saveEditoraComFoto(editora, file);
+				//ResponseEntity<String> freeImgDTO = editoraService.saveEditoraComFoto(editora, file);
+				ResponseEntity<String> freeImgDTO = editoraService.saveFotoImgBB(editora, file);
+				
+				return new ResponseEntity<>(freeImgDTO.getBody(), HttpStatus.OK);
+				
+				/*
+				Editora novaEditora = editoraService.saveEditoraComFoto(editora, file); 
+				if (null == novaEditora)
+					return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+				else
+					return new ResponseEntity<>(novaEditora, HttpStatus.CREATED);
+				*/	
+		
+	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, @PathVariable Integer id) {

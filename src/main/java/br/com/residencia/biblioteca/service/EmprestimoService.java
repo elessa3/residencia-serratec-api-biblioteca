@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.EmprestimoDTO;
+import br.com.residencia.biblioteca.dto.EmprestimosResumoDTO;
 import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.repository.EmprestimoRepository;
 
@@ -98,5 +99,15 @@ public EmprestimoDTO updateEmprestimoDTO(EmprestimoDTO EmprestimoDTO, Integer id
 		emprestimoRepository.deleteById(id);
 		return deletarEmprestimo(id);
 	}	
+	
+	public EmprestimosResumoDTO toEmprestimosResumoDTO(Emprestimo emprestimo) {
+		EmprestimosResumoDTO emprestimosResumoDTO = new EmprestimosResumoDTO();
+		
+		emprestimosResumoDTO.setCodigoEmprestimo(emprestimo.getCodigoEmprestimo());
+		emprestimosResumoDTO.setDataEmprestimo(emprestimo.getDataEmprestimo());
+		emprestimosResumoDTO.setDataEntrega(emprestimo.getDataEntrega());
+				
+		return emprestimosResumoDTO;
+	}
 
 }

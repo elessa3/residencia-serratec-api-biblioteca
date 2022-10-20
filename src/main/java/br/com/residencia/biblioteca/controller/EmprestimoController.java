@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.residencia.biblioteca.dto.EmprestimoDTO;
 import br.com.residencia.biblioteca.entity.Emprestimo;
 import br.com.residencia.biblioteca.service.EmprestimoService;
 
@@ -29,9 +30,20 @@ public class EmprestimoController {
 		return new ResponseEntity<> (emprestimoService.getAllEmprestimo(), HttpStatus.OK);
 	}
 	
+	@GetMapping("/dto")
+	public ResponseEntity<List<EmprestimoDTO>> getAllEmprestimoDTO() {
+		return new ResponseEntity<> (emprestimoService.getAllEmprestimoDTO(), HttpStatus.OK);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Emprestimo> getEmprestimoById(@PathVariable Integer id) {
-		return new ResponseEntity<> (emprestimoService.getEmprestimoById(id), HttpStatus.OK);
+		//return new ResponseEntity<> (emprestimoService.getEmprestimoById(id), HttpStatus.OK);
+		Emprestimo emprestimo = emprestimoService.getEmprestimoById(id);
+		if(emprestimo != null) {
+			return new ResponseEntity<>(emprestimo, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(emprestimo, HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PostMapping
@@ -39,9 +51,19 @@ public class EmprestimoController {
 		return new ResponseEntity<> (emprestimoService.saveEmprestimo(emprestimo), HttpStatus.OK);
 	}
 	
+	@PostMapping("/dto")
+	public ResponseEntity<EmprestimoDTO> saveEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO) {
+		return new ResponseEntity<> (emprestimoService.saveEmprestimoDTO(emprestimoDTO), HttpStatus.OK);
+	}
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<Emprestimo> updateEmprestimo(@RequestBody Emprestimo emprestimo, @PathVariable Integer id) {
 		return new ResponseEntity<> (emprestimoService.updateEmprestimo(emprestimo, id), HttpStatus.OK);
+	}
+	
+	@PutMapping("/dto/{id}")
+	public ResponseEntity<EmprestimoDTO> updateEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO, @PathVariable Integer id) {
+		return new ResponseEntity<> (emprestimoService.updateEmprestimoDTO(emprestimoDTO, id), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -17,14 +17,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import br.com.residencia.biblioteca.repository.UserRepository;
 
 //Define que essa classe e uma configuracao para o Spring
-@SuppressWarnings("deprecation")
+
 @Configuration 
 //Habilita a seguranca para a api
 @EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @SuppressWarnings("unused")
-@Autowired 
+ 
+  @Autowired 
   private UserRepository userRepo;
   @Autowired 
   private JWTFilter filter;

@@ -13,8 +13,6 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import br.com.residencia.biblioteca.dto.EditoraDTO;
-
 
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -37,10 +35,10 @@ public class Editora {
 		
 	}
 	
-	public Editora(EditoraDTO editoraDTO) {
+	/*public Editora(EditoraDTO editoraDTO) {
         this.codigoEditora = editoraDTO.getCodigoEditora();
         this.nome= editoraDTO.getNome();
-	}
+	}*/
 	
 	public Integer getCodigoEditoraDTO() {
 		return codigoEditora;
@@ -68,7 +66,5 @@ public class Editora {
 	public void setLivros(Set<Livros> livros) {
 		this.livros = livros;
 	}
-	
-	
-
+		
 }

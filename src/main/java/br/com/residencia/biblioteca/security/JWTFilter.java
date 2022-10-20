@@ -24,8 +24,9 @@ public class JWTFilter extends OncePerRequestFilter {
 	// Injecting Dependencies
 	@Autowired 
 	private UserDetailsServiceImpl userDetailsService;
-	@Autowired 
-	private JWTUtil jwtUtil;
+    @Autowired 
+    private JWTUtil jwtUtil;
+
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request,

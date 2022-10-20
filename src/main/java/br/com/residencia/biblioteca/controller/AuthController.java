@@ -35,6 +35,7 @@ public class AuthController {
 
     // Registro de usuario
     @PostMapping("/registro")
+    //http://localhost:8080/auth/registro
     public Map<String, Object> registerHandler(@RequestBody User user){
         // Encriptando a senha usando o Bcrypt
         String encodedPass = passwordEncoder.encode(user.getUserPassword());
