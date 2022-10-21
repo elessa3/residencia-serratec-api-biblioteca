@@ -1,7 +1,5 @@
 package br.com.residencia.biblioteca.service;
 
-import java.io.IOException;
-import java.net.http.HttpClient;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,24 +7,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.residencia.biblioteca.dto.ConsultaCnpjDTO;
 import br.com.residencia.biblioteca.dto.EditoraDTO;
@@ -132,9 +114,9 @@ public class EditoraService {
 				
 		editoraDTO.setCodigoEditora(editora.getCodigoEditora());
 		editoraDTO.setNome(editora.getNome());	
-		editoraDTO.setImagemFileName(editora.getImagemFileName());
-		editoraDTO.setImagemNome(editora.getImagemNome());
-		editoraDTO.setImagemUrl(editora.getImagemUrl());
+		//editoraDTO.setImagemFileName(editora.getImagemFileName());
+		//editoraDTO.setImagemNome(editora.getImagemNome());
+		//editoraDTO.setImagemUrl(editora.getImagemUrl());
 		return editoraDTO;
 	}
 	
@@ -151,7 +133,7 @@ public class EditoraService {
 			editoraAtualizadaDTO = toDTO(editoraAtualizada);			
 		}
 		
-		emailService.sendEmail("ericabombom3@hotmail.com", "Teste de envio de email", "Testando o envio no corpo do email");
+		//emailService.sendEmail("ericabombom3@hotmail.com", "Teste de envio de email", "Testando o envio no corpo do email");
 		return editoraAtualizadaDTO;
 	}
 	
@@ -204,6 +186,7 @@ public class EditoraService {
 	
 	//******************************************************
 	
+	/*
 	public ResponseEntity<String> saveFotoImgBB(String editora,
 			MultipartFile file) throws IOException {
 		
@@ -252,7 +235,7 @@ public class EditoraService {
 			MultipartFile file) throws IOException {
         
 		RestTemplate restTemplate = new RestTemplate();
-		String serverUrl = freeImageHostUrl + freeImageHostKey;
+		//String serverUrl = freeImageHostUrl + freeImageHostKey;
 		
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
@@ -417,7 +400,9 @@ public class EditoraService {
 		ResponseEntity<FreeImageHostDTO> response = restTemplate
 		  .postForEntity(serverUrl, requestEntity, FreeImageHostDTO.class);
 		 */		
-		ResponseEntity<String> response = restTemplate
+		
+	/*
+	ResponseEntity<String> response = restTemplate
 				.postForEntity(serverUrl, requestEntity, String.class);
 		
 		return response;		
@@ -525,6 +510,8 @@ public class EditoraService {
 		ResponseEntity<FreeImageHostDTO> response = restTemplate
 		  .postForEntity(serverUrl, requestEntity, FreeImageHostDTO.class);
 */		
+	
+	/*
 		ResponseEntity<String> response = restTemplate
 				  .postForEntity(serverUrl, requestEntity, String.class);
 
@@ -542,6 +529,6 @@ public class EditoraService {
 		}
 		
 		return editora;
-	}
+	}*/
 		
 }

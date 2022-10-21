@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import br.com.residencia.biblioteca.dto.ConsultaCnpjDTO;
 import br.com.residencia.biblioteca.dto.EditoraDTO;
@@ -92,7 +89,7 @@ public class EditoraController {
 	}
 	
 	//******************************
-	
+	/*
 	@PostMapping(value = "/cadastro-editora-com-foto", 
 			consumes = { MediaType.APPLICATION_JSON_VALUE,
 						 MediaType.MULTIPART_FORM_DATA_VALUE}
@@ -113,9 +110,9 @@ public class EditoraController {
 					return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 				else
 					return new ResponseEntity<>(novaEditora, HttpStatus.CREATED);
-				*/	
+				//	
 		
-	}
+	}*/
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Editora> updateEditora(@RequestBody Editora editora, @PathVariable Integer id) {

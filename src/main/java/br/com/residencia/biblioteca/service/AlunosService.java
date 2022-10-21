@@ -8,14 +8,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.residencia.biblioteca.dto.AlunosDTO;
 import br.com.residencia.biblioteca.dto.AlunosEmprestimosDTO;
-import br.com.residencia.biblioteca.dto.EditoraDTO;
-import br.com.residencia.biblioteca.dto.EmprestimoDTO;
 import br.com.residencia.biblioteca.dto.EmprestimosResumoDTO;
-import br.com.residencia.biblioteca.dto.LivrosDTO;
 import br.com.residencia.biblioteca.entity.Alunos;
-import br.com.residencia.biblioteca.entity.Editora;
 import br.com.residencia.biblioteca.entity.Emprestimo;
-import br.com.residencia.biblioteca.entity.Livros;
 import br.com.residencia.biblioteca.repository.AlunosRepository;
 import br.com.residencia.biblioteca.repository.EmprestimoRepository;
 

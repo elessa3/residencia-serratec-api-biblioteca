@@ -33,6 +33,8 @@ public class LivrosService {
 		
 	public Livros getLivrosById(Integer id) {
 		return livrosRepository.findById(id).get();
+		//return livrosRepository.findById(id).orElse(null);
+		//Quando ele retorna null não tem uma exceção
 	}
 	
 	public Livros saveLivros(Livros livros) {

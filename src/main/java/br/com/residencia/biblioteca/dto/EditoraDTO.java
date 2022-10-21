@@ -2,8 +2,6 @@ package br.com.residencia.biblioteca.dto;
 
 import java.util.List;
 
-import javax.persistence.Column;
-
 public class EditoraDTO {	
 	
 	private Integer codigoEditora;	
@@ -47,7 +45,7 @@ public class EditoraDTO {
 	}
 	
 	//******************************
-
+/*
 	@Column(name = "imagem_nome")
 	private String imagemNome;
 	
@@ -60,4 +58,5 @@ public class EditoraDTO {
 	private String imagemNome;
 	private String imagemFileName;
 	private String imagemUrl;
+	*/
 }
