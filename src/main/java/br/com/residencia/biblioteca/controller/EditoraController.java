@@ -29,7 +29,8 @@ public class EditoraController {
 	
 	@GetMapping
 	public ResponseEntity<List<Editora>> getAllEditora(){
-		return new ResponseEntity<> (editoraService.getAllEditora(), HttpStatus.OK);
+		return new ResponseEntity<> (editoraService.getAllEditora(),
+				HttpStatus.OK);
 	}
 	
 	@GetMapping("/dto")
@@ -59,14 +60,14 @@ public class EditoraController {
 	//rever esta parte
 	@GetMapping("/consulta-cnpj/{cnpj}")
 	public ResponseEntity<ConsultaCnpjDTO> consultaCnpjApiExterna(@PathVariable String cnpj){
-		/*ConsultaCnpjDTO consultaCnpjDTO = editoraService.consultaCnpjApiExterna(cnpj);
+		ConsultaCnpjDTO consultaCnpjDTO = editoraService.consultaCnpjApiExterna(cnpj);
 		if(null != consultaCnpjDTO)
 			return new ResponseEntity<> (consultaCnpjDTO, 
 				HttpStatus.OK);
 		else
 			return new ResponseEntity<>(consultaCnpjDTO, 
-				HttpStatus.NOT_FOUND);	*/
-		return new ResponseEntity<>(editoraService.consultaCnpjApiExterna(cnpj), HttpStatus.OK);
+				HttpStatus.NOT_FOUND);	
+		//return new ResponseEntity<>(editoraService.consultaCnpjApiExterna(cnpj), HttpStatus.OK);
 	}
 	
 	

@@ -35,7 +35,7 @@ public class JWTUtil {
 
   // Metodo utilizado no login e para criar o JWT contendo alguns dados gerais e o e-mail do usuario
   public String generateToken(String email) throws IllegalArgumentException, JWTCreationException {
-	  return JWT.create()
+      return JWT.create()
               .withSubject(subject)
               .withClaim("email", email)
               .withIssuedAt(new Date())

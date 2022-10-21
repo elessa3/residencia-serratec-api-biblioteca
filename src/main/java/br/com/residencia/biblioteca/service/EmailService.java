@@ -1,10 +1,17 @@
 package br.com.residencia.biblioteca.service;
 
+import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmailService {
-	/*@Autowired
+	@Autowired
 	public JavaMailSender emailSender;
 
 	@Value("${mail.from}")
@@ -55,5 +62,5 @@ public class EmailService {
 		}
 		
 	}
-	*/	
+		
 }

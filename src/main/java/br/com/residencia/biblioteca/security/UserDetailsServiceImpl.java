@@ -21,19 +21,19 @@ import br.com.residencia.biblioteca.repository.UserRepository;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired 
-	private UserRepository userRepo;
+ @Autowired 
+ private UserRepository userRepo;
 
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Optional<User> userRes = userRepo.findByUserEmail(email);    
-		if(userRes.isEmpty())
-			throw new UsernameNotFoundException("Não foi possível encontrar usuário com o email = " + email);
+ @Override
+ public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+     Optional<User> userRes = userRepo.findByUserEmail(email);
+     if(userRes.isEmpty())
+         throw new UsernameNotFoundException("Não foi possível encontrar usuário com o email = " + email);
 
-		User user = userRes.get();
-		return new org.springframework.security.core.userdetails.User(
-				email,
-				user.getUserPassword(),
-				Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))); // Define, de forma estatica, o perfil do usuario encontrado
+     User user = userRes.get();
+     return new org.springframework.security.core.userdetails.User(
+             email,
+             user.getUserPassword(),
+             Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))); // Define, de forma estatica, o perfil do usuario encontrado
  }
 }

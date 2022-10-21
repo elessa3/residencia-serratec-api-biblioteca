@@ -2,6 +2,8 @@ package br.com.residencia.biblioteca.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,8 @@ public class AlunosController {
 	
 	@GetMapping
 	public ResponseEntity<List<Alunos>> getAllAlunos(){
-		return new ResponseEntity<> (alunosService.getAllAlunos(), HttpStatus.OK);
+		return new ResponseEntity<> (alunosService.getAllAlunos(), 
+				HttpStatus.OK);
 	}
 	
 	@GetMapping("/dto")
@@ -64,8 +67,9 @@ public class AlunosController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Alunos> saveAluno(@RequestBody Alunos alunos) {
-		return new ResponseEntity<>(alunosService.saveAluno(alunos), HttpStatus.CREATED);
+	public ResponseEntity<Alunos> saveAluno(@Valid @RequestBody Alunos alunos) {
+		return new ResponseEntity<>(alunosService.saveAluno(alunos),
+				HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/dto")
@@ -76,7 +80,8 @@ public class AlunosController {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Alunos> updateAlunos(@RequestBody Alunos alunos, @PathVariable Integer id) {
-		return new ResponseEntity<> (alunosService.updateAlunos(alunos, id), HttpStatus.OK);
+		return new ResponseEntity<> (alunosService.updateAlunos(alunos, id),
+				HttpStatus.OK);
 	}
 	
 	@PutMapping("/dto/{id}")

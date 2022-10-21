@@ -17,13 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import br.com.residencia.biblioteca.repository.UserRepository;
 
 //Define que essa classe e uma configuracao para o Spring
-
 @Configuration 
 //Habilita a seguranca para a api
 @EnableWebSecurity 
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
- 
   @Autowired 
   private UserRepository userRepo;
   @Autowired 
@@ -31,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Autowired 
   private UserDetailsServiceImpl uds;
 
-  
   //Metodo encarregado de configurar a seguranca da API
   @Override
   protected void configure(HttpSecurity http) throws Exception { 

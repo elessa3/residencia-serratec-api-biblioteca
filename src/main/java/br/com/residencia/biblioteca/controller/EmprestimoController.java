@@ -40,34 +40,41 @@ public class EmprestimoController {
 		//return new ResponseEntity<> (emprestimoService.getEmprestimoById(id), HttpStatus.OK);
 		Emprestimo emprestimo = emprestimoService.getEmprestimoById(id);
 		if(emprestimo != null) {
-			return new ResponseEntity<>(emprestimo, HttpStatus.OK);
+			return new ResponseEntity<>(emprestimo, 
+					HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(emprestimo, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(emprestimo, 
+					HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@PostMapping
 	public ResponseEntity<Emprestimo> saveEmprestimo(@RequestBody Emprestimo emprestimo) {
-		return new ResponseEntity<> (emprestimoService.saveEmprestimo(emprestimo), HttpStatus.OK);
+		return new ResponseEntity<> (emprestimoService.saveEmprestimo(emprestimo), 
+				HttpStatus.OK);
 	}
 	
 	@PostMapping("/dto")
 	public ResponseEntity<EmprestimoDTO> saveEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO) {
-		return new ResponseEntity<> (emprestimoService.saveEmprestimoDTO(emprestimoDTO), HttpStatus.OK);
+		return new ResponseEntity<> (emprestimoService.saveEmprestimoDTO(emprestimoDTO), 
+				HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Emprestimo> updateEmprestimo(@RequestBody Emprestimo emprestimo, @PathVariable Integer id) {
-		return new ResponseEntity<> (emprestimoService.updateEmprestimo(emprestimo, id), HttpStatus.OK);
+		return new ResponseEntity<> (emprestimoService.updateEmprestimo(emprestimo, id),
+				HttpStatus.OK);
 	}
 	
 	@PutMapping("/dto/{id}")
 	public ResponseEntity<EmprestimoDTO> updateEmprestimoDTO(@RequestBody EmprestimoDTO emprestimoDTO, @PathVariable Integer id) {
-		return new ResponseEntity<> (emprestimoService.updateEmprestimoDTO(emprestimoDTO, id), HttpStatus.OK);
+		return new ResponseEntity<> (emprestimoService.updateEmprestimoDTO(emprestimoDTO, id), 
+				HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Emprestimo> deleteEmprestimo (@PathVariable Integer id) {
-		return new ResponseEntity<> (emprestimoService.deletarEmprestimo(id), HttpStatus.OK);
+		return new ResponseEntity<> (emprestimoService.deletarEmprestimo(id), 
+				HttpStatus.OK);
 	}
 }

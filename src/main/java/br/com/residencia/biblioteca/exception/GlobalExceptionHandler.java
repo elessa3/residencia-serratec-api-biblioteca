@@ -49,8 +49,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	/** /
-	@ExceptionHandler(NoSuchElementException.class)
+
+	/*@ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<Object> handleNoSuchElementException(
     		final NoSuchElementException ex,
             final WebRequest request) {
